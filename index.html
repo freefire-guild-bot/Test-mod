@@ -178,10 +178,6 @@
 </main>
 
 <script>
-/**
- * Advanced Unlock System
- * Architected for maximum reliability & security feel
- */
 const UnlockSystem = {
     config: {
         targetUrl: "dashboard.html",
@@ -197,14 +193,11 @@ const UnlockSystem = {
     },
 
     init() {
-        // Advanced: Use Page Visibility API to auto-verify when user returns to tab
         document.addEventListener('visibilitychange', () => {
             if (document.visibilityState === 'visible') {
                 this.checkStatus();
             }
         });
-
-        // Check on initial load
         this.checkStatus();
     },
 
@@ -216,16 +209,19 @@ const UnlockSystem = {
 
     checkStatus() {
         const initTime = localStorage.getItem("hypeInitTime");
-        if (!initTime) return;
+        if (!initTime) return; // Agar click nahi kiya toh kuch mat karo
 
         const timeElapsed = (Date.now() - initTime) / 1000;
 
         if (timeElapsed >= this.config.requiredWaitSec) {
+            // 15 sec pure ho gaye, successful redirect
             localStorage.removeItem("hypeInitTime");
             this.startVerification();
         } else {
-            this.updateStatus(`❌ Security Alert: Maintain connection for at least ${this.config.requiredWaitSec} seconds.`, "error");
-            localStorage.removeItem("hypeInitTime");
+            // Agar jaldi aa gaya, toh timer delete NAHI karna hai
+            // Bas remaining time show kar do
+            let secondsLeft = Math.ceil(this.config.requiredWaitSec - timeElapsed);
+            this.updateStatus(`❌ Security Alert: Please wait ${secondsLeft} more seconds on the link!`, "error");
         }
     },
 
@@ -245,7 +241,7 @@ const UnlockSystem = {
                 
                 setTimeout(() => {
                     window.location.href = this.config.targetUrl;
-                }, 1500); // Quick redirect after success
+                }, 1500); 
             }
         }, 1000);
     },
@@ -256,7 +252,6 @@ const UnlockSystem = {
     }
 };
 
-// Boot up the system
 document.addEventListener("DOMContentLoaded", () => UnlockSystem.init());
 
 </script>
