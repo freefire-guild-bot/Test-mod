@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZEXI SYSTEM | 404 ERROR</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            /* Cyberpunk Crash Theme Colors */
+            --neon-red: #ff2a2a;
+            --neon-cyan: #00f3ff;
+            --bg-dark: #050510;
+            --text-main: #e2e8f0;
+            --glow-red: 0 0 20px rgba(255, 42, 42, 0.6);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Rajdhani', sans-serif;
+            background: radial-gradient(circle at center, #1a0505 0%, var(--bg-dark) 100%);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* CRT Scanline Effect */
+        body::after {
+            content: " ";
+            display: block;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            z-index: 1;
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+        }
+
+        .error-container {
+            position: relative;
+            z-index: 2;
+            padding: 50px 40px;
+            background: rgba(10, 5, 5, 0.85);
+            border: 1px solid rgba(255, 42, 42, 0.3);
+            box-shadow: inset 0 0 30px rgba(255, 42, 42, 0.1);
+            backdrop-filter: blur(5px);
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 25px), calc(100% - 25px) 100%, 0 100%, 0 25px);
+            max-width: 500px;
+            width: 90%;
+        }
+
+        /* Pro Glitch Text Effect */
+        .glitch {
+            font-size: 110px;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--neon-red);
+            text-shadow: var(--glow-red);
+            position: relative;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 5, 5, 0);
+        }
+
+        .glitch::before {
+            left: 3px;
+            text-shadow: -2px 0 var(--neon-cyan);
+            clip: rect(24px, 550px, 90px, 0);
+            animation: glitch-anim 3s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+            left: -3px;
+            text-shadow: -2px 0 #bc13fe;
+            clip: rect(85px, 550px, 140px, 0);
+            animation: glitch-anim 2.5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(10px, 9999px, 44px, 0); }
+            20% { clip: rect(85px, 9999px, 59px, 0); }
+            40% { clip: rect(33px, 9999px, 98px, 0); }
+            60% { clip: rect(71px, 9999px, 23px, 0); }
+            80% { clip: rect(42px, 9999px, 73px, 0); }
+            100% { clip: rect(93px, 9999px, 12px, 0); }
+        }
+
+        .subtitle {
+            font-family: 'Fira Code', monospace;
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        /* Warning Box */
+        .highlight {
+            font-family: 'Fira Code', monospace;
+            font-size: 15px;
+            color: #facc15;
+            margin-bottom: 35px;
+            padding: 15px;
+            background: rgba(250, 204, 21, 0.08);
+            border-left: 4px solid #facc15;
+            text-align: left;
+            line-height: 1.5;
+        }
+
+        /* Cyber Button */
+        .btn-cyber {
+            display: inline-block;
+            padding: 14px 35px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            color: #fff;
+            background: transparent;
+            border: 1px solid var(--neon-red);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 0 10px rgba(255, 42, 42, 0.2);
+            clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+        }
+
+        .btn-cyber:hover {
+            background: rgba(255, 42, 42, 0.2);
+            box-shadow: var(--glow-red);
+            text-shadow: 0 0 8px #fff;
+            transform: translateY(-2px);
+        }
+
+        .btn-cyber:active {
+            transform: scale(0.95);
+        }
+
+        .footer-brand {
+            position: absolute;
+            bottom: 20px;
+            font-size: 14px;
+            color: #64748b;
+            letter-spacing: 4px;
+            z-index: 2;
+            text-transform: uppercase;
+        }
+        
+        .footer-brand span {
+            color: var(--neon-red);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="error-container">
+        <div class="glitch" data-text="404">404</div>
+        <div class="subtitle">[ SYSTEM OFFLINE ]</div>
+        
+        <div class="highlight">
+            > LIMIT REACH: 500 PLAYERS CLAIMED GLORY <br>
+            > TARGET: Free Guild Glory Bot<br>
+            > STATUS: Website has crashed unexpectedly.
+        </div>
+
+        <a href="index.html" class="btn-cyber">REBOOT SYSTEM</a>
+    </div>
+
+    <div class="footer-brand">Powered by <span>ZEXISTEY</span></div>
+
+</body>
+</html>
